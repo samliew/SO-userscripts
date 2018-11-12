@@ -3,9 +3,11 @@
 // @description  Displays additional user & review information on the deleted reviews report
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.1
+// @version      0.2.2
 //
 // @include      https://reports.sobotics.org/r/*
+//
+// @require      https://github.com/samliew/SO-mod-userscripts/raw/master/lib/common.js
 //
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
@@ -15,40 +17,6 @@
 
 
     const SOurl = 'https://stackoverflow.com';
-
-
-    // Simple wrapper for GM_xmlhttpRequest that returns a Promise
-    // See http://tampermonkey.net/documentation.php#GM_xmlhttpRequest for options
-    function ajaxPromise(options) {
-        if(typeof options === 'string') {
-            options = { url: options };
-        }
-
-        return new Promise(function(resolve, reject) {
-            if(typeof options.url === 'undefined' || options.url == null) reject();
-
-            options.method = options.method || 'GET';
-            options.onload = function(response) {
-                resolve(response.responseText);
-            };
-            options.onerror = function() {
-                reject();
-            };
-            GM_xmlhttpRequest(options);
-        });
-    }
-
-
-    // Solution from https://stackoverflow.com/a/24719409/584192
-    function jQueryXhrOverride() {
-        var xhr = jQuery.ajaxSettings.xhr();
-        var setRequestHeader = xhr.setRequestHeader;
-        xhr.setRequestHeader = function(name, value) {
-            if (name == 'X-Requested-With') return;
-            setRequestHeader.call(this, name, value);
-        };
-        return xhr;
-    }
 
 
     function getUsersInfo() {
