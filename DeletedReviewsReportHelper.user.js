@@ -3,7 +3,7 @@
 // @description  Displays additional user & review information on the deleted reviews report
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.2.2
+// @version      0.2.3
 //
 // @include      https://reports.sobotics.org/r/*
 //
@@ -54,7 +54,7 @@
 
                 // Add currently/recently banned indicator
                 let daysago = new Date();
-                daysago.setDate(daysago.getDate() - 14);
+                daysago.setDate(daysago.getDate() - 30);
                 histItems.eq(0).each(function() {
                     const datetime = new Date($(this).find('.relativetime').attr('title'));
                     const duration = Number(this.innerText.match(/\= \d+ days/)[0].replace(/\D+/g, ''));
