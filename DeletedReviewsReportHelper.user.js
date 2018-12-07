@@ -3,7 +3,7 @@
 // @description  Displays additional user & review information on the deleted reviews report
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.2.3
+// @version      0.2.4
 //
 // @include      https://reports.sobotics.org/r/*
 //
@@ -63,9 +63,12 @@
                     const currtext = banEndDatetime > Date.now() ? 'current' : 'recent';
 
                     if(banEndDatetime > daysago) {
-
                         $(`<a class="reviewban-ending ${currtext == 'current' ? 'warning' : ''}" title="${currtext}ly review banned until ${banEndDatetime}" target="_blank">${currtext} review ban ${duration}d</a>`)
                             .insertAfter(userlink);
+                    }
+
+                    if(currtext == 'current') {
+                        userlink.parents('.report').addClass('is-review-banned');
                     }
                 });
             });
@@ -83,6 +86,9 @@
 
         var styles = `
 <style>
+.is-review-banned {
+    opacity: 0.5;
+}
 a.reviewban-count,
 a.reviewban-link,
 a.reviewban-ending {
