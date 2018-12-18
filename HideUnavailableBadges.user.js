@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Hide unavailable SO badges
-// @description  Hide unavailable SO badges
+// @description  Hide unavailable SO badges on the "unearned" tab page
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.1
+// @version      1.0
 //
 // @include      https://stackoverflow.com/help/badges?filter=unearned
 // @include      https://stackoverflow.com/help/badges?tab=General&filter=unearned
@@ -12,8 +12,8 @@
 (function() {
     'use strict';
     
-    // Append to description text
-    $('.page-description').append(`<p>A userscript is currently hiding unavailable badges.</p>`);
+    // Append to tab description text
+    $('.page-description').append(`<p><a href="https://github.com/samliew/SO-userscripts/edit/master/HideUnavailableBadges.user.js" target="_blank">A userscript</a> is currently hiding unavailable badges.</p>`);
 
     // Badges that are currently no longer available on SO
     const unavail = [892, 30, 3108, 1306, 6157, 6158, 7358];
