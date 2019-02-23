@@ -3,7 +3,7 @@
 // @description  Increase max-width of sites to 1440px
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      1.0.1
+// @version      1.0.2
 //
 // @include      https://*stackexchange.com/*
 // @include      https://*stackoverflow.com/*
@@ -25,6 +25,7 @@
     GM_addStyle(`
 
 
+/* General */
 .contentWrapper,
 .top-bar .-container,
 body > .container {
@@ -39,6 +40,15 @@ body > .container {
 }
 html.html__unpinned-leftnav #content {
     max-width: none;
+    width: 100%;
+}
+
+
+/* Mod pages */
+.flag-container {
+    width: calc(100% - 330px);
+}
+.flagged-posts {
     width: 100%;
 }
 
