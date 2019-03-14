@@ -28,6 +28,7 @@ Experiemental comments UI changes. Includes [ReduceClutter](https://github.com/s
 - Reduce comment body font-size to 96%
 - Comment meta-text is on a new line, font-size reduced to 90%
 - Usernames in comments are italicized
+- Deleted comment info is floated right to keep comments compact instead of taking up a new line
 - Delete links are floated right (to make it consistent with Undelete links)
 - When mouse is over comments section, show faint preview of all delete links
 - Comment hover background
