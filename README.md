@@ -25,6 +25,7 @@ _by [Samuel Liew](https://stackoverflow.com/users/584192/samuel-liew)_
 ### [New Comments Layout](https://github.com/samliew/SO-userscripts/blob/master/NewCommentsLayout.user.js)
 
 - Experiemental comments UI changes
+<br>![screenshot](https://raw.githubusercontent.com/samliew/SO-userscripts/master/images/Screenshot_2019-03-14_110300.png)
 
 
 ### [Stack Exchange Wider Mode](https://github.com/samliew/SO-userscripts/blob/master/StackExchangeWiderMode.user.js)
