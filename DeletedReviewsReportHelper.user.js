@@ -3,7 +3,7 @@
 // @description  Displays additional user & review information on the deleted reviews report
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.3
+// @version      0.4
 //
 // @include      https://reports.sobotics.org/r/*
 //
@@ -66,7 +66,7 @@
                     const currtext = banEndDatetime > Date.now() ? 'current' : 'recent';
 
                     if(banEndDatetime > daysago) {
-                        $(`<a class="reviewban-ending ${currtext == 'current' ? 'warning' : ''}" title="${currtext}ly review banned until ${banEndDatetime}" target="_blank">${currtext} review ban ${duration}d</a>`)
+                        $(`<span class="reviewban-ending ${currtext == 'current' ? 'warning' : ''}" title="${currtext}ly review banned until ${banEndDatetime}" target="_blank">${currtext} review ban ${duration}d</span>`)
                             .insertAfter(userlink);
                     }
 
@@ -115,10 +115,27 @@
     }
 
 
+    function showBanLinks() {
+
+        const reports = $('.report').not('.is-review-banned');
+        reports.each(function() {
+
+            const userlink = $(this).find('.FIDuser a').last();
+            const uid = userlink.attr('href').match(/\d+/)[0];
+
+            const reviews = $(this).find('.reportLink:not(.FIDuser) a');
+            const reviewLinks = reviews.get().map(el => el.href.split('/review/')[1]).join(';');
+
+            $(this).find('.FIDdeletedReviews').append(`<div><a href="https://stackoverflow.com/admin/review/bans#${uid}|${reviewLinks}">Ban user</a></div>`);
+        });
+    }
+
+
     function doPageload() {
 
         getUsersInfo();
         sortReports();
+        showBanLinks();
     }
 
 
@@ -131,7 +148,7 @@
 }
 a.reviewban-count,
 a.reviewban-link,
-a.reviewban-ending {
+span.reviewban-ending {
     position: relative;
     top: -2px;
     display: inline-block;
@@ -146,7 +163,7 @@ a.reviewban-ending {
     background: white;
     color: #666;
 }
-a.reviewban-ending {
+span.reviewban-ending {
     border-radius: 3px;
     border-color: red;
     color: black;
@@ -158,7 +175,7 @@ a.reviewban-ending {
     letter-spacing: -0.5px;
 }
 a.reviewban-count.warning,
-a.reviewban-ending.warning {
+span.reviewban-ending.warning {
     background: #FF9;
     border-color: red;
     color: red;
