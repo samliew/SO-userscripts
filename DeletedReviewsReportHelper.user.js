@@ -3,7 +3,7 @@
 // @description  Displays additional user & review information on the deleted reviews report
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.2.4
+// @version      0.3
 //
 // @include      https://reports.sobotics.org/r/*
 //
@@ -17,6 +17,9 @@
 
 
     const SOurl = 'https://stackoverflow.com';
+
+    const getReviewTypeId = s => ['first-posts', 'late-answers', 'low-quality-posts'].indexOf(s);
+    const getDeleteTypeId = s => ['diamond_mod', 'diamond_mod_convert', 'review', 'reputation_mod', 'duplicate'].indexOf(s);
 
 
     function getUsersInfo() {
@@ -76,9 +79,46 @@
     }
 
 
+    function sortReports() {
+
+        // Preprocess
+        $('.reportLink a').each(function() {
+            const arr = this.title.replace(')', '').split(' (');
+            $(this).parent().attr({
+                'data-reviewtype' : arr[0],
+                'data-reviewtypeid' : getReviewTypeId(arr[0]),
+                'data-deltype' : arr[1],
+                'data-deltypeid' : getDeleteTypeId(arr[1]),
+            });
+        });
+
+        const reports = $('.report');
+        reports.each(function() {
+
+            const reviews = $(this).find('.reportLink:not(.FIDuser)');
+            const reviewsContainer = reviews.first().parent();
+
+            reviews.sort(function(a, b) {
+                let n = Number(a.dataset.deltypeid),
+                    m = Number(b.dataset.deltypeid);
+                if(n == m) return 0;
+                return n > m ? 1 : -1;
+
+            }).sort(function(a, b) {
+                let n = Number(a.dataset.reviewtypeid),
+                    m = Number(b.dataset.reviewtypeid);
+                if(n == m) return 0;
+                return n > m ? 1 : -1;
+
+            }).detach().appendTo(reviewsContainer);
+        });
+    }
+
+
     function doPageload() {
 
         getUsersInfo();
+        sortReports();
     }
 
 
@@ -87,7 +127,7 @@
         var styles = `
 <style>
 .is-review-banned {
-    opacity: 0.5;
+    opacity: 0.7;
 }
 a.reviewban-count,
 a.reviewban-link,
