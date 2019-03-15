@@ -3,7 +3,7 @@
 // @description  Displays additional user & review information on the deleted reviews report
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.4.1
+// @version      0.4.2
 //
 // @include      https://reports.sobotics.org/r/*
 //
@@ -82,8 +82,12 @@
     function sortReports() {
 
         // Preprocess
-        $('.reportLink a').each(function() {
+        $('.reportLink:not(.FIDuser) a').each(function() {
             const arr = this.title.replace(')', '').split(' (');
+
+            // Do not use mod deleted as dupe answers
+            if(arr[1] === 'duplicate') $(this).parent('.reportLink').remove();
+
             $(this).parent().attr({
                 'data-reviewtype' : arr[0],
                 'data-reviewtypeid' : getReviewTypeId(arr[0]),
