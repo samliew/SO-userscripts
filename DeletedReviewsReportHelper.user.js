@@ -3,7 +3,7 @@
 // @description  Displays additional user & review information on the deleted reviews report
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.4
+// @version      0.4.1
 //
 // @include      https://reports.sobotics.org/r/*
 //
@@ -126,7 +126,7 @@
             const reviews = $(this).find('.reportLink:not(.FIDuser) a');
             const reviewLinks = reviews.get().map(el => el.href.split('/review/')[1]).join(';');
 
-            $(this).find('.FIDdeletedReviews').append(`<div><a href="https://stackoverflow.com/admin/review/bans#${uid}|${reviewLinks}">Ban user</a></div>`);
+            $(this).find('.FIDdeletedReviews').append(`<div><a href="https://stackoverflow.com/admin/review/bans#${uid}|${reviewLinks}" target="_blank">Ban user</a></div>`);
         });
     }
 
