@@ -3,7 +3,7 @@
 // @description  Increase max-width of sites to 1440px
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      1.0.4
+// @version      1.0.5
 //
 // @include      https://*stackexchange.com/*
 // @include      https://*stackoverflow.com/*
@@ -13,6 +13,8 @@
 // @include      https://*mathoverflow.net/*
 // @include      https://*stackapps.com/*
 // @include      https://*.stackexchange.com/*
+//
+// @exclude      */transcript/*
 //
 // @grant        GM_addStyle
 // @run-at       document-start
