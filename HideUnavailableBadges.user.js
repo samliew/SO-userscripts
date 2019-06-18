@@ -3,7 +3,7 @@
 // @description  Hide unavailable SO badges on the "unearned" tab page, feature-request https://meta.stackoverflow.com/q/378025
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      1.0
+// @version      1.1
 //
 // @include      https://stackoverflow.com/help/badges?filter=unearned
 // @include      https://stackoverflow.com/help/badges?tab=General&filter=unearned
@@ -16,7 +16,7 @@
     $('.page-description').append(`<p><a href="https://github.com/samliew/SO-userscripts/blob/master/HideUnavailableBadges.user.js" target="_blank">A userscript</a> is currently hiding unavailable badges.</p>`);
 
     // Badges that are currently no longer available on SO
-    const unavail = [892, 30, 3108, 1306, 6157, 6158, 7358];
+    const unavail = [892, 30, 3108, 1306, 6157, 6158, 7358, 95, 63];
 
     // For matching the badge URLs in the next line below
     const regexp = new RegExp('\/' + unavail.join('|') + '\/');
