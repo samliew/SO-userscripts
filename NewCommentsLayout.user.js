@@ -3,7 +3,7 @@
 // @description  Experimental comments layout
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      0.1.1
+// @version      0.1.2
 //
 // @include      https://*stackoverflow.com/*
 // @include      https://*serverfault.com/*
@@ -17,6 +17,9 @@
 //
 // @grant        GM_addStyle
 // @run-at       document-start
+//
+// @updateURL    https://github.com/samliew/SO-mod-userscripts/raw/master/NewCommentsLayout.user.js
+// @downloadURL  https://github.com/samliew/SO-mod-userscripts/raw/master/NewCommentsLayout.user.js
 // ==/UserScript==
 
 (function() {
