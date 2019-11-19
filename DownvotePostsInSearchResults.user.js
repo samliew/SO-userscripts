@@ -3,7 +3,7 @@
 // @description  Button to mass downvote posts in search results when searching for not locked posts
 // @homepage     https://github.com/samliew/SO-userscripts
 // @author       @samliew
-// @version      0.2
+// @version      0.2.1
 //
 // @include      https://*stackexchange.com/search*
 // @include      https://*stackoverflow.com/search*
@@ -46,6 +46,7 @@
 
                 if(!data.Success) {
                     console.log(`Failed to downvote ${pid}`);
+                    errors++;
                 }
                 else {
                     console.log(`Downvoted ${pid}`);
@@ -56,7 +57,7 @@
                     console.log(`Daily vote limit reached.`);
                     return;
                 }
-                if(++errors > 3) {
+                if(errors > 3) {
                     console.log(`Too many errors. Terminating.`);
                     return;
                 }
