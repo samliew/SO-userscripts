@@ -3,7 +3,7 @@
 // @description  Displays a list of upcoming and ongoing elections on https://stackexchange.com/elections
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      0.4.2
+// @version      0.4.3
 //
 // @include      https://stackexchange.com/elections
 //
@@ -25,6 +25,7 @@
 
 
     const detectFutureSites = ['stackoverflow', 'serverfault', 'superuser', 'math', 'workplace', 'interpersonal'];
+    const refreshSecs = 20;
 
 
     let cacheExpireDate = new Date();
@@ -166,7 +167,7 @@
             if(ajaxCount > 20) {
 
                 // Refresh page after a minute
-                setTimeout(() => location.reload(), 60000);
+                setTimeout(() => location.reload(), refreshSecs * 1000);
 
                 // Display notice
                 $('#more-notice').show();
@@ -333,7 +334,7 @@
 </table>`)
             .appendTo(content)
             .before(`<h1>Elections on the Network</h1>`)
-            .after(`<p id="more-notice">This page will automatically load more sites in 60 seconds (to avoid throttling).</p>`);
+            .after(`<p id="more-notice">This page will automatically load more sites in ${refreshSecs} seconds (to avoid throttling).</p>`);
         electionItems = $(`<tbody id="election-items"></tbody>`).appendTo(outputTable);
 
         // Cache list in localstorage
