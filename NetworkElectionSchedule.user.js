@@ -3,7 +3,7 @@
 // @description  Displays a list of upcoming and ongoing elections on https://stackexchange.com/elections
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      0.4.3
+// @version      0.4.4
 //
 // @include      https://stackexchange.com/elections
 //
@@ -262,7 +262,7 @@
     function displaySiteOngoingElection(site, electionNum, nomination, primary, election, endDate, candidates, seats) {
         electionItems.prepend(`<tr class="active-election" data-timestamp="${new Date(endDate).getTime() || Date.now()}">
   <td><img data-src="${site.icon_url}" class="siteicon" /></td>
-  <td><a href="${site.site_url}/election/${electionNum}" target="_blank">${site.name}</a></td>
+  <td><a href="${site.site_url}/election" title="view past elections" target="_blank">${site.name}</a></td>
   <td><a href="${site.site_url}/election/${electionNum}?tab=nomination" target="_blank">${nomination}</a></td>
   <td><a href="${site.site_url}/election/${electionNum}?tab=primary" target="_blank">${primary ? primary : '-'}</a></td>
   <td><a href="${site.site_url}/election/${electionNum}?tab=election" target="_blank">${election}</a></td>
@@ -276,7 +276,7 @@
     function displaySiteLastElection(site, lastElectionNum, lastElectionDate) {
         electionItems.append(`<tr class="last-election" data-timestamp="${new Date(lastElectionDate).getTime() || Date.now()}">
   <td><img data-src="${site.icon_url}" class="siteicon" /></td>
-  <td><a href="${site.site_url}/election" target="_blank">${site.name}</a></td>
+  <td><a href="${site.site_url}/election" title="view past elections" target="_blank">${site.name}</a></td>
   <td colspan="6"><a href="${site.site_url}/election/${lastElectionNum}" target="_blank">last election #${lastElectionNum}</a> ended ${lastElectionDate}</td>
 </tr>`);
     }
