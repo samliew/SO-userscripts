@@ -3,7 +3,7 @@
 // @description  Displays a list of upcoming and ongoing elections on https://stackexchange.com/elections
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      0.4.1
+// @version      0.4.2
 //
 // @include      https://stackexchange.com/elections
 //
@@ -274,7 +274,7 @@
 
     function displaySiteLastElection(site, lastElectionNum, lastElectionDate) {
         electionItems.append(`<tr class="last-election" data-timestamp="${new Date(lastElectionDate).getTime() || Date.now()}">
-  <td><img src="${site.icon_url}" class="siteicon" /></td>
+  <td><img data-src="${site.icon_url}" class="siteicon" /></td>
   <td><a href="${site.site_url}/election" target="_blank">${site.name}</a></td>
   <td colspan="6"><a href="${site.site_url}/election/${lastElectionNum}" target="_blank">last election #${lastElectionNum}</a> ended ${lastElectionDate}</td>
 </tr>`);
