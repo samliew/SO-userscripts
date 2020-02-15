@@ -3,7 +3,7 @@
 // @description  Displays a list of upcoming and ongoing elections on https://stackexchange.com/elections
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      0.4
+// @version      0.4.1
 //
 // @include      https://stackexchange.com/elections
 //
@@ -24,7 +24,7 @@
     let ajaxCount = 0;
 
 
-    const detectFutureSites = ['stackoverflow', 'serverfault', 'superuser', 'math'];
+    const detectFutureSites = ['stackoverflow', 'serverfault', 'superuser', 'math', 'workplace', 'interpersonal'];
 
 
     let cacheExpireDate = new Date();
@@ -179,15 +179,15 @@
             // Scrape election page
             ajaxPromise(site.site_url + '/election' + (next == 0 ? '' : '/' + next), 'html').then(function(data) {
 
-                const html = $($.parseHTML(data));
-                const htmlStr = data.documentElement ? data.documentElement.outerHTML : data.outerHTML;
+                const htmlStr = data.documentElement.outerHTML;
+                const html = $(htmlStr);
 
                 if(typeof html === 'undefined' || typeof htmlStr === 'undefined') {
                     return;
                 }
 
                 // Check if election listing page (no active election)
-                if(htmlStr.includes('Community Moderator Elections') && htmlStr.includes('There are no active community moderator elections') || html.find('#mainbar-full > p').length == 1) {
+                if(htmlStr.includes('There are no active community moderator elections') || html.find('#mainbar-full > table.elections').length == 1) {
                     const lastElectionLink = $('a[href*="/election/"]', html).last();
                     let lastElection = null, lastElectionEndDate = null;
 
