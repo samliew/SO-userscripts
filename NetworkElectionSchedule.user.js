@@ -3,7 +3,7 @@
 // @description  Displays a list of upcoming and ongoing elections on https://stackexchange.com/elections
 // @homepage     https://github.com/samliew/SO-mod-userscripts
 // @author       @samliew
-// @version      0.4.4
+// @version      0.4.5
 //
 // @include      https://stackexchange.com/elections
 //
@@ -25,7 +25,7 @@
 
 
     const detectFutureSites = ['stackoverflow', 'serverfault', 'superuser', 'math', 'workplace', 'interpersonal'];
-    const refreshSecs = 20;
+    const refreshSecs = 60;
 
 
     let cacheExpireDate = new Date();
