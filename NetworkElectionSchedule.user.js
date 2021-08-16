@@ -26,6 +26,7 @@
 
     const detectFutureSites = ['stackoverflow', 'serverfault', 'superuser', 'math', 'workplace', 'interpersonal'];
     const refreshSecs = 60;
+    const displayImages = false;
 
 
     let cacheExpireDate = new Date();
@@ -261,7 +262,7 @@
 
     function displaySiteOngoingElection(site, electionNum, nomination, primary, election, endDate, candidates, seats) {
         electionItems.prepend(`<tr class="active-election" data-timestamp="${new Date(endDate).getTime() || Date.now()}">
-  <td><img data-src="${site.icon_url}" class="siteicon" /></td>
+  <td><img data-src="${displayImages ? site.icon_url : ''}" class="siteicon" /></td>
   <td><a href="${site.site_url}/election" title="view past elections" target="_blank">${site.name}</a></td>
   <td><a href="${site.site_url}/election/${electionNum}?tab=nomination" target="_blank">${nomination}</a></td>
   <td><a href="${site.site_url}/election/${electionNum}?tab=primary" target="_blank">${primary ? primary : '-'}</a></td>
